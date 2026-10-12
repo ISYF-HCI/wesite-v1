@@ -1,5 +1,5 @@
 <template>
-  <div id="page" :class="{ archived: archive }">
+  <div id="page" :class="archive ? 'archived' : 'heritage'">
     <ArchiveBar v-if="archive" :archive="archive" />
     <NavBar />
     <ButtonScroll />
@@ -13,6 +13,8 @@
 </template>
 
 <style>
+@import url("~/assets/css/heritage.css");
+
 /* Room for the fixed archive bar shown above the nav on archived sites */
 #page.archived {
   --archive-bar-height: 2.25rem;
@@ -47,6 +49,10 @@ onMounted(() => {
   window.error = false;
 
   gsap.registerPlugin(ScrollTrigger);
+
+  // Archived sites keep their original section fade-in; the main site's
+  // content stays visible and its pages own their motion.
+  if (!archive.value) return;
 
   const sections = gsap.utils.toArray("main section");
 

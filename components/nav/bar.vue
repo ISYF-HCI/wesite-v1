@@ -522,7 +522,7 @@ onMounted(() => {
   if (window.innerWidth < 900) {
     return;
   }
-  gsap.from(".stamp, .menu .item, .menu .socials", {
+  gsap.from("nav .stamp, nav .menu .item, nav .menu .socials", {
     opacity: 0,
 
     x: -7,

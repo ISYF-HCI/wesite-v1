@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-12T16:00:00Z",
+  "title": "Design System: ISYF @ Singapore",
+  "extensions": {
+    "scope": {
+      "selector": "#page.heritage",
+      "source": "assets/css/heritage.css",
+      "appliesTo": [
+        "/",
+        "/history",
+        "/laureates",
+        "/<upcoming year>"
+      ],
+      "excludes": "Archived edition sites (#page.archived, e.g. /2026) keep assets/css/index.css tokens, Fraunces/Lexend and the blue primary; never restyle them.",
+      "contentSource": "data/editions.js, data/scientists.js, data/site.js (edited yearly by the incoming student committee)"
+    },
+    "colorMeta": {
+      "plaster": {
+        "role": "neutral",
+        "displayName": "Clocktower Plaster",
+        "canonical": "#f6f5f1",
+        "tonalRamp": [
+          "#2b2a26",
+          "#45433d",
+          "#625f57",
+          "#817d74",
+          "#a29e94",
+          "#c4c0b6",
+          "#ebe8e1",
+          "#f6f5f1"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Lacquer Ink",
+        "canonical": "#1f1a19",
+        "tonalRamp": [
+          "#1f1a19",
+          "#342d2b",
+          "#4d4542",
+          "#6b625e",
+          "#8d847f",
+          "#b1a9a4",
+          "#d6d0c6",
+          "#f0ece8"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "canonical": "#4d4542"
+      },
+      "ink-mute": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "#6b625e"
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline Stone",
+        "canonical": "#d6d0c6"
+      },
+      "crimson": {
+        "role": "primary",
+        "displayName": "Hwa Chong Red",
+        "canonical": "#e10a19",
+        "tonalRamp": [
+          "#3a0306",
+          "#5f0509",
+          "#8a070f",
+          "#b0101a",
+          "#e10a19",
+          "#f06a73",
+          "#f6cfd2",
+          "#fbeaeb"
+        ]
+      },
+      "crimson-deep": {
+        "role": "primary",
+        "displayName": "Deep Red",
+        "canonical": "#b0101a"
+      },
+      "crimson-wash": {
+        "role": "primary",
+        "displayName": "Red Wash",
+        "canonical": "#fbeaeb"
+      },
+      "slate": {
+        "role": "neutral",
+        "displayName": "Archive Slate",
+        "canonical": "#21282c",
+        "tonalRamp": [
+          "#121618",
+          "#21282c",
+          "#343d42",
+          "#4a545a",
+          "#67727a",
+          "#8e979d",
+          "#bcc2c6",
+          "#e6e9eb"
+        ]
+      },
+      "gilt": {
+        "role": "secondary",
+        "displayName": "Honour Gilt",
+        "canonical": "#e6c878",
+        "tonalRamp": [
+          "#3a2e10",
+          "#5e4b1c",
+          "#866c2b",
+          "#ae8f3d",
+          "#d2b052",
+          "#e6c878",
+          "#f1e0b0",
+          "#faf3df"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page h1; larger on the home hero and the upcoming-edition masthead."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section h2."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Row and sub-item h3."
+      },
+      "serif-text": {
+        "displayName": "Serif Text",
+        "purpose": "Edition themes and archive themes."
+      },
+      "engraved-name": {
+        "displayName": "Engraved Name",
+        "purpose": "Uppercase charcoal laureate names on the home honour board only."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Opening paragraph of a page."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, max 68ch."
+      },
+      "label": {
+        "displayName": "Small-caps Meta",
+        "purpose": "Edition numbers and meta lines beside or after what they describe; never as a kicker above a heading."
+      }
+    },
+    "shadows": [
+      {
+        "name": "dropdown-drop",
+        "value": "0 12px 24px -12px rgba(31, 26, 25, 0.35)",
+        "purpose": "Desktop nav submenu only."
+      },
+      {
+        "name": "photo-legibility",
+        "value": "0 2px 18px rgba(31, 26, 25, 0.45)",
+        "purpose": "Text-shadow for plaster text crossing photography only."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All heritage transitions."
+      },
+      {
+        "name": "plaque-hover",
+        "value": "background-color 200ms",
+        "purpose": "Plaque deepens to Deep Red."
+      },
+      {
+        "name": "arrow-nudge",
+        "value": "transform 250ms, translateX(4px)",
+        "purpose": "Arrow on plaque, text link and explore links."
+      },
+      {
+        "name": "board-settle",
+        "value": "opacity + translateY(10px), 900ms, 60ms stagger per year",
+        "purpose": "Honour board year groups settle in once on first view; skipped for reduced motion and no-JS."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "560px"
+      },
+      {
+        "name": "timeline-stack",
+        "value": "640px"
+      },
+      {
+        "name": "filters-static",
+        "value": "700px"
+      },
+      {
+        "name": "split-stack",
+        "value": "760px"
+      },
+      {
+        "name": "desktop-nav",
+        "value": "1100px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Plaque",
+      "kind": "button",
+      "refersTo": "plaque",
+      "description": "Primary action: a Hwa Chong Red plaque with the drawn arrow. One per view.",
+      "html": "<a class=\"ds-plaque\" href=\"#\">ISYF 2027 <svg class=\"ds-arrow\" viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 10h13M11 5l5 5-5 5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-plaque { display: inline-flex; align-items: center; gap: 0.625rem; min-height: 48px; padding: 0 1.375rem; border-radius: 2px; background-color: #e10a19; color: #f6f5f1; font-family: Lexend, 'Helvetica Neue', Arial, sans-serif; font-weight: 500; text-decoration: none; transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-plaque:hover { background-color: #b0101a; } .ds-plaque:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; } .ds-arrow { width: 1.125em; height: 1.125em; transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-plaque:hover .ds-arrow { transform: translateX(4px); }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "refersTo": "text-link",
+      "description": "Secondary action: underlined Deep Red link with the arrow.",
+      "html": "<a class=\"ds-text-link\" href=\"#\">18 editions since 2009 <svg class=\"ds-arrow\" viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\"><path d=\"M3 10h13M11 5l5 5-5 5\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-text-link { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 44px; color: #b0101a; font-family: Lexend, 'Helvetica Neue', Arial, sans-serif; font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; } .ds-text-link:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; border-radius: 2px; } .ds-arrow { width: 1.125em; height: 1.125em; transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-text-link:hover .ds-arrow { transform: translateX(4px); }"
+    },
+    {
+      "name": "Year Select",
+      "kind": "input",
+      "refersTo": "select",
+      "description": "Edition filter select on the laureates page.",
+      "html": "<label class=\"ds-year-filter\"><span class=\"ds-meta\">Edition</span><select class=\"ds-select\"><option>All years</option><option>ISYF 2026</option></select></label>",
+      "css": ".ds-year-filter { display: flex; align-items: center; gap: 0.75rem; } .ds-meta { font-family: 'Libre Caslon Text', Georgia, serif; font-variant: small-caps; text-transform: lowercase; letter-spacing: 0.06em; color: #6b625e; } .ds-select { min-height: 40px; padding: 0 2rem 0 0.75rem; border: 1px solid #1f1a19; border-radius: 2px; background: #f6f5f1 url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231f1a19' stroke-width='1.5'/%3E%3C/svg%3E\") no-repeat right 0.75rem center / 10px; appearance: none; font-family: Lexend, sans-serif; font-size: 15px; color: #1f1a19; } .ds-select:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; }"
+    },
+    {
+      "name": "Filter Tabs",
+      "kind": "chip",
+      "refersTo": "text-link",
+      "description": "Distinction filter: bare text buttons, Deep Red text and a red underline when selected.",
+      "html": "<div class=\"ds-filter\"><button class=\"ds-filter-btn is-selected\">Nobel laureates <span class=\"ds-count\">34</span></button><button class=\"ds-filter-btn\">Fields medallists <span class=\"ds-count\">6</span></button></div>",
+      "css": ".ds-filter { display: flex; gap: 0 1.5rem; border-top: 1px solid #1f1a19; border-bottom: 1px solid #d6d0c6; background: #f6f5f1; } .ds-filter-btn { min-height: 48px; padding: 0; border: none; border-bottom: 2px solid transparent; background: none; font-family: Lexend, sans-serif; font-size: 15px; font-weight: 400; color: #1f1a19; cursor: pointer; transition: border-color 200ms, color 200ms; } .ds-filter-btn:hover { color: #b0101a; } .ds-filter-btn.is-selected { color: #b0101a; border-bottom-color: #e10a19; font-weight: 500; } .ds-filter-btn:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; } .ds-count { font-size: 13px; color: #6b625e; } .ds-filter-btn.is-selected .ds-count { color: #b0101a; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Plaster bar with ink underline, Caslon wordmark and tracked Lexend items.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-wordmark\">ISYF</span><a class=\"ds-nav-item\" href=\"#\">HOME</a><a class=\"ds-nav-item\" href=\"#\">ISYF 2027</a><a class=\"ds-nav-item\" href=\"#\">HISTORY</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 1.5rem; padding: 0.75rem 1.5rem; background: #f6f5f1; border-bottom: 1px solid #1f1a19; } .ds-wordmark { font-family: 'Libre Caslon Display', Georgia, serif; font-size: 26px; letter-spacing: 0.02em; margin-right: auto; color: #1f1a19; } .ds-nav-item { font-family: Lexend, sans-serif; font-weight: 500; font-size: 14px; letter-spacing: 0.08em; color: #1f1a19; text-decoration: none; } .ds-nav-item:hover { color: #b0101a; } .ds-nav-item:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Honour Board",
+      "kind": "custom",
+      "refersTo": "honour-board",
+      "description": "Signature: a plaster section opened by a 2px red rule, laureates listed by first year in red numerals and charcoal engraved caps.",
+      "html": "<section class=\"ds-board\"><h2 class=\"ds-board-h\">Nobel laureates at ISYF</h2><ol class=\"ds-roll\"><li><span class=\"ds-numeral\">2009</span><a href=\"#\"><span class=\"ds-name\">Sir Anthony Leggett</span><span class=\"ds-field\">Physics, 2003</span></a></li><li><span class=\"ds-numeral\">2010</span><a href=\"#\"><span class=\"ds-name\">Professor Jerome I. Friedman</span><span class=\"ds-field\">Physics, 1990</span></a></li></ol></section>",
+      "css": ".ds-board { background: #f6f5f1; color: #1f1a19; border-top: 2px solid #e10a19; padding: 2.5rem 0 4rem; } .ds-board-h { font-family: 'Libre Caslon Display', Georgia, serif; font-weight: 400; font-size: 40px; line-height: 1.1; margin: 0 0 2rem; padding-bottom: 2rem; border-bottom: 1px solid #d6d0c6; } .ds-roll { list-style: none; padding: 0; margin: 0; columns: 2 12rem; column-gap: 3rem; column-rule: 1px solid #d6d0c6; } .ds-roll li { break-inside: avoid; margin-bottom: 1.75rem; } .ds-numeral { display: block; font-family: 'Libre Caslon Display', Georgia, serif; font-size: 28px; line-height: 1; color: #e10a19; margin-bottom: 0.375rem; } .ds-roll a { display: block; color: #1f1a19; text-decoration: none; padding-block: 0.3rem; } .ds-roll a:hover .ds-name { color: #b0101a; } .ds-roll a:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; border-radius: 2px; } .ds-name { display: block; font-family: 'Libre Caslon Text', Georgia, serif; font-size: 14px; line-height: 1.35; letter-spacing: 0.08em; text-transform: uppercase; } .ds-field { display: block; font-family: 'Libre Caslon Text', Georgia, serif; font-style: italic; font-size: 14px; color: #6b625e; }"
+    },
+    {
+      "name": "Ledger Row",
+      "kind": "card",
+      "refersTo": "ledger-row",
+      "description": "Default list row: Caslon year column, small-caps meta and serif theme, ruled in stone.",
+      "html": "<ol class=\"ds-themes\"><li class=\"ds-theme\"><a class=\"ds-year\" href=\"#\">2026</a><div><span class=\"ds-meta\">18th edition</span><span class=\"ds-theme-name\">Curiosity Unlocked</span></div></li><li class=\"ds-theme\"><a class=\"ds-year\" href=\"#\">2025</a><div><span class=\"ds-meta\">17th edition</span><span class=\"ds-theme-name\">Innovation Unified</span></div></li></ol>",
+      "css": ".ds-themes { list-style: none; padding: 0; margin: 0; background: #f6f5f1; } .ds-theme { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; align-items: baseline; padding-block: 0.875rem; border-top: 1px solid #d6d0c6; } .ds-year { font-family: 'Libre Caslon Display', Georgia, serif; font-size: 26px; color: #e10a19; text-decoration: none; font-variant-numeric: lining-nums; } .ds-year:hover { text-decoration: underline; } .ds-year:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; border-radius: 2px; } .ds-meta { display: block; font-family: 'Libre Caslon Text', Georgia, serif; font-size: 15px; font-variant: small-caps; text-transform: lowercase; letter-spacing: 0.06em; color: #6b625e; } .ds-theme-name { display: block; font-family: 'Libre Caslon Text', Georgia, serif; font-size: 17px; line-height: 1.4; color: #1f1a19; }"
+    },
+    {
+      "name": "Link Row",
+      "kind": "nav",
+      "refersTo": "link-row",
+      "description": "Ruled strip of plain links, e.g. an archived edition's pages.",
+      "html": "<ul class=\"ds-link-row\"><li><a href=\"#\">Website</a></li><li><a href=\"#\">Programme</a></li><li><a href=\"#\">Speakers</a></li></ul>",
+      "css": ".ds-link-row { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; border-top: 1px solid #d6d0c6; border-bottom: 1px solid #d6d0c6; } .ds-link-row li + li { border-left: 1px solid #d6d0c6; } .ds-link-row a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 1rem; font-family: Lexend, sans-serif; font-weight: 500; color: #1f1a19; text-decoration: none; } .ds-link-row li:first-child a { padding-left: 0; } .ds-link-row a:hover { color: #b0101a; } .ds-link-row a:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Notice",
+      "kind": "card",
+      "refersTo": "notice",
+      "description": "Featured message (e.g. the /2027 'not published yet' note): 2px red top rule on the Red Wash. No frame.",
+      "html": "<div class=\"ds-notice\"><h2 class=\"ds-notice-h\">This page is not published yet</h2><p>The programme for ISYF 2027 will appear here. <a href=\"#\">See ISYF 2026</a></p></div>",
+      "css": ".ds-notice { padding: 1.5rem 1.75rem 0.5rem; border-top: 2px solid #e10a19; background: #fbeaeb; color: #1f1a19; font-family: Lexend, sans-serif; } .ds-notice-h { font-family: 'Libre Caslon Display', Georgia, serif; font-weight: 400; font-size: 26px; margin: 0 0 0.5rem; } .ds-notice a { color: #b0101a; font-weight: 500; text-decoration-thickness: 1px; text-underline-offset: 4px; } .ds-notice a:focus-visible { outline: 2px solid #e10a19; outline-offset: 3px; border-radius: 2px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Clocktower Honour Board",
+    "overview": "The ISYF-wide pages (home, history, laureates, the upcoming-edition page) borrow their materials from Hwa Chong Institution's clocktower building: cool plaster-white walls, the school's red (matched to the Hwa Chong logo), and the honour boards where names are engraved year by year. The proof ISYF offers is lineage, so the system is built to set records: editions, years, themes and laureate names, ruled and ordered like a ledger rather than dressed up like a summit landing page.\n\nDensity is editorial and calm. Plaster carries most of every page (roughly 60%), charcoal ink carries the text (roughly 30%), and red is an accent only (roughly 10%): years, rules, the one primary plaque, links. There are no red sections or pages. Ink hairlines divide the plaster into ruled sections with a heading column; the honour board is set apart by a 2px red rule and red numerals, not by a field or a frame. The only dark surface is the dark grey footer and mobile menu, shared with the archived sites. Corners are nearly square, nothing floats on shadows, and motion is limited to one settling moment on the honour board and small arrow nudges.",
+    "keyCharacteristics": [
+      "Cool plaster ground, charcoal-ink text, Hwa Chong red as the single accent (about 60 / 30 / 10)",
+      "No red fields and no double frames; gilt survives only as a hover colour in the dark nav",
+      "Hairline rules (1px ink and stone, 2px red for a featured section) instead of cards and shadows",
+      "Libre Caslon Display for headings and years; Libre Caslon Text for themes, names and small-caps labels; Lexend for running text",
+      "2px corners everywhere; no pills",
+      "Data-driven lists that grow with each edition"
+    ],
+    "rules": [
+      {
+        "name": "The Accent-Only Rule",
+        "body": "Red is a mark, never a field: a numeral, a rule, a link, one plaque per view. Aim for roughly 60% plaster, 30% charcoal ink, 10% red on any screen. No red sections, pages or panels, no red side stripes; the Red Wash is the only red-tinted ground.",
+        "section": "colors"
+      },
+      {
+        "name": "The Small-Red-Is-Deep Rule",
+        "body": "Red text under about 24px uses Deep Red (#b0101a); the logo red (#e10a19) is for large numerals, rules and filled shapes.",
+        "section": "colors"
+      },
+      {
+        "name": "The Gilt-in-the-Dark Rule",
+        "body": "Gilt appears only as a nav hover colour on the dark grey menu or over photography. Never on plaster, never as a frame.",
+        "section": "colors"
+      },
+      {
+        "name": "The Engraved Names Rule",
+        "body": "Uppercase tracked serif is reserved for names on the home honour board (and the nav's tracked Lexend items). Do not set headings or running text in caps.",
+        "section": "typography"
+      },
+      {
+        "name": "The Serif Holds the Record Rule",
+        "body": "Years, themes and names are set in Caslon; explanatory prose is Lexend. Do not swap them.",
+        "section": "typography"
+      },
+      {
+        "name": "The Rule-Not-Shadow Rule",
+        "body": "To set something apart, open it with a 2px red rule, and if it must stand out further, lay it on the Red Wash. Never lift it on a shadow, never box it in a frame.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do scope every heritage rule under `#page.heritage` and re-point shared tokens there; leave `assets/css/index.css` and the `/2026` archive untouched.",
+      "Do open each section with a 1px ink rule and separate rows with 1px Hairline Stone.",
+      "Do set years, themes and names in Caslon, with large numerals in Hwa Chong Red (#e10a19) and small red text in Deep Red (#b0101a).",
+      "Do keep red to about 10% of a screen; set a featured section apart with a 2px red top rule, and a featured message with a red rule over the Red Wash.",
+      "Do drive every list and count from `data/` and lay lists out with auto-fill grids or CSS columns so the next committee never hand-tunes layout.",
+      "Do keep corners at 2px and tap targets at 44px or more."
+    ],
+    "donts": [
+      "Don't use red fields or double gold frames: no red sections, pages, panels or footers, and no gilt borders or offset-outline frames. Large saturated red tires the eye and reads as a warning; red stops meaning anything as an accent once it fills a field; and red with gold frames reads dated.",
+      "Don't put gilt on page content; it is only a nav hover colour on dark grounds.",
+      "Don't use pills, badges, stat boxes, chip clouds, side-stripe cards or shadowed cards.",
+      "Don't place a small-caps label above a heading as a kicker; meta lines sit beside or after what they describe.",
+      "Don't use icon glyphs or emoji as decoration; the drawn arrow and the social marks are the only icons.",
+      "Don't restyle archived edition sites or let heritage styles leak outside `#page.heritage`.",
+      "Don't add statistics, testimonials or counts that are not in `data/`."
+    ]
+  }
+}

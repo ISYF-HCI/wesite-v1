@@ -45,8 +45,6 @@
           View More
         </button>
       </section>
-      <span>
-        Link to photos on Google Drive: <a class="a_no_underline" href="#">Coming soon!</a></span>
     </main>
   </div>
 </template>

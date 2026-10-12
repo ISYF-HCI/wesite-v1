@@ -9,8 +9,12 @@
             © International Science Youth Forum @ Singapore, {{ firstYear }}–{{ latestYear }}. All rights reserved.
           </span>
 
-          <p>Made with ♡ by Fu Cai Gui, Tang Xuyuan and Nguyen Thien Minh Tuan</p>
-          <p>Updated and maintained by Ernest Chan Ern Yi and Sophie Tung Xuan Ying</p>
+          <!-- Archived edition sites keep the credits they launched with -->
+          <template v-if="archive">
+            <p>Made with ♡ by Fu Cai Gui, Tang Xuyuan and Nguyen Thien Minh Tuan</p>
+            <p>Updated and maintained by Ernest Chan Ern Yi and Sophie Tung Xuan Ying</p>
+          </template>
+          <p v-else>Made with ♡ by Fu Cai Gui</p>
           <p>Special thanks to Studio Ardent for photos & video</p>
 
           <p style="font-style: italic">
@@ -22,7 +26,7 @@
       </section>
 
       <section>
-        <h1>ORGANISERS</h1>
+        <h2>ORGANISERS</h2>
         <div class="organizers">
           <img :src="useBase('images/logos/moe_logo.png')" alt="Ministry of Education" />
           <img :src="useBase('images/logos/hc_logo.png')" alt="Hwa Chong Institution" />
@@ -31,7 +35,7 @@
 
       <div class="footer-columns">
         <section>
-          <h1 class="header">Socials</h1>
+          <h2 class="header">Socials</h2>
           <div class="contact-list">
             <a
               class="item"
@@ -51,7 +55,7 @@
         </section>
 
         <section>
-          <h1 class="header">Contact Us!</h1>
+          <h2 class="header">Contact Us!</h2>
           <div class="contact-list">
             <div class="contact">
               <span class="material-icons-outlined">mail</span>
@@ -121,7 +125,7 @@
 
 /* ========== GENERAL STYLING ========== */
 a,
-h1 {
+h2 {
   color: var(--fg);
   text-decoration: none;
 }
@@ -133,15 +137,16 @@ section {
   margin-block: 1rem;
 }
 
-h1,
+h2,
 .copyright {
   display: block;
   font-size: var(--fs);
   font-weight: 600;
   margin-block: 1rem;
 }
-h1 {
+h2 {
   font-family: var(--font-display);
+  line-height: 1em;
 }
 .header {
   text-transform: uppercase;
@@ -241,8 +246,10 @@ p {
 import { useBase } from '~/composables/useBase';
 import { firstYear, upcoming } from '~/data/editions';
 import { socials } from '~/data/site';
+import { useArchive } from '~/composables/useArchive';
 import InstagramIcon from "./icons/instagram.vue";
 import YoutubeIcon from "./icons/youtube.vue";
 
 const latestYear = upcoming.year;
+const archive = useArchive();
 </script>

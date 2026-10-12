@@ -71,7 +71,9 @@ can copy.
 - Partner logos, `public/images/logos/`
 - ISYF 2026 programme, photos, poster exhibition and infographic gallery
   under `/2026` and `public/`
-- No testimonials, delegate counts per edition or quotes on hand. Do not
+- "120+ students and educators each year" is confirmed accurate by the
+  team (shown on home page)
+- No testimonials, per-edition delegate counts or quotes on hand. Do not
   fabricate them
 
 ## Product Principles

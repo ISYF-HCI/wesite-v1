@@ -1,0 +1,400 @@
+/*
+ * Hwa Chong heritage: the look of the ISYF-wide pages (home, history,
+ * laureates, upcoming edition). Taken from the clocktower building: plaster
+ * white walls and the school's red, used sparingly as an accent, with
+ * laureates set like names on an honour board.
+ *
+ * Everything here is scoped to #page.heritage, which layouts/template.vue sets
+ * on every page except archived edition sites. Archived sites (e.g. /2026)
+ * keep their original look from index.css.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap");
+
+#page.heritage {
+  /* Palette */
+  --plaster: #f6f5f1;
+  --plaster-deep: #ebe8e1;
+  --ink: #1f1a19;
+  --ink-soft: #4d4542;
+  --ink-mute: #6b625e;
+  --rule: #d6d0c6;
+  /* Hwa Chong red, matched to the school's logo. Used as an accent only:
+     large numerals, rules, the primary button. Small red text uses the
+     deeper shade so it stays readable. */
+  --crimson: #e10a19;
+  --crimson-deep: #b0101a;
+  --gilt: #e6c878;
+
+  --font: "Lexend", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Libre Caslon Display", "Libre Caslon Text", Georgia, serif;
+  --font-serif: "Libre Caslon Text", Georgia, serif;
+
+  /* Re-point the shared tokens that components read */
+  --fg: var(--ink);
+  --bg: var(--plaster);
+  --primary: var(--crimson);
+  --primary-50: #fbeaeb;
+  --primary-100: #f6cfd2;
+  --primary-200: #eea4aa;
+  --primary-200-hsla: 355, 71%, 79%;
+  --primary-400: var(--crimson);
+  --primary-500: var(--crimson);
+  --primary-600: var(--crimson-deep);
+  --primary-900: #2a1716;
+  --gray-100: var(--plaster);
+  --gray-200: var(--rule);
+  --gray-300: #bdb5aa;
+  --gray-500: var(--ink-mute);
+  --gray-900: var(--ink);
+  --gray-950: var(--ink);
+  --gold: var(--gilt);
+
+  background-color: var(--plaster);
+  color: var(--ink);
+  font-family: var(--font);
+  font-weight: 350;
+}
+
+/* The page ground shows above #page where a layout's top margin collapses */
+html:has(#page.heritage) {
+  background-color: #f6f5f1;
+}
+
+#page.heritage ::selection {
+  background-color: var(--crimson-deep);
+  color: var(--plaster);
+}
+
+#page.heritage *,
+#page.heritage *::before,
+#page.heritage *::after {
+  scrollbar-color: var(--crimson) var(--plaster-deep);
+}
+
+#page.heritage :focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ========== TYPE ==========
+ * Base element rules use the class alone so that any component's own
+ * scoped styles still win over them. */
+.heritage h1,
+.heritage h2,
+.heritage h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.heritage h1 {
+  font-size: clamp(44px, 6vw, 76px);
+  line-height: 1.02;
+  margin: 2.5rem 0 1.25rem;
+}
+
+.heritage h2 {
+  font-size: clamp(30px, 3.4vw, 44px);
+  line-height: 1.1;
+  margin: 0 0 1rem;
+}
+
+.heritage h3 {
+  font-size: 22px;
+  line-height: 1.25;
+  margin: 0 0 0.5rem;
+}
+
+.heritage p {
+  line-height: 1.65;
+  max-width: 68ch;
+  margin: 0 0 1.25rem;
+}
+
+.heritage a {
+  color: inherit;
+  text-decoration-color: var(--crimson);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.heritage a:hover {
+  --fg: var(--crimson-deep);
+  color: var(--crimson-deep);
+}
+
+#page.heritage main section {
+  margin-block: 0;
+}
+
+/* Lede: the opening paragraph of a page */
+#page.heritage .lede {
+  font-size: 19px;
+  line-height: 1.6;
+  --fg: var(--ink-soft);
+}
+
+/* Small caps label used for edition numbers and meta lines */
+#page.heritage .meta {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  --fg: var(--ink-mute);
+}
+
+/* Primary action: a crimson plaque */
+#page.heritage .plaque {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-height: 48px;
+  padding: 0 1.375rem;
+  border-radius: 2px;
+  background-color: var(--crimson);
+  --fg: var(--plaster);
+  color: var(--plaster);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#page.heritage .plaque:hover {
+  background-color: var(--crimson-deep);
+  --fg: var(--plaster);
+  color: var(--plaster);
+}
+
+#page.heritage .plaque .arrow,
+#page.heritage .text-link .arrow {
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#page.heritage .plaque:hover .arrow,
+#page.heritage .text-link:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Secondary action: underlined text link with an arrow */
+#page.heritage .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  font-weight: 500;
+  --fg: var(--crimson-deep);
+  color: var(--crimson-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+#page.heritage .arrow {
+  display: inline-block;
+  width: 1.125em;
+  height: 1.125em;
+  flex-shrink: 0;
+}
+
+/* Hairline-ruled section with a heading column */
+#page.heritage .ruled {
+  border-top: 1px solid var(--ink);
+  padding-block: 2.5rem 4rem;
+}
+
+/* A featured section on the plaster ground: a red rule opens it and red
+   marks its numerals; the field itself stays calm */
+#page.heritage .board {
+  border-top: 2px solid var(--crimson);
+  padding-block: 2.5rem 4rem;
+}
+
+
+/* A ruled row of plain links, e.g. an archived edition's pages */
+#page.heritage .link-row {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+#page.heritage .link-row li {
+  margin: 0;
+}
+
+#page.heritage .link-row li + li {
+  border-left: 1px solid var(--rule);
+}
+
+#page.heritage .link-row a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#page.heritage .link-row li:first-child a {
+  padding-left: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page.heritage *,
+  #page.heritage *::before,
+  #page.heritage *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+}
+
+/* ========== NAV (shared component, heritage skin) ========== */
+#page.heritage nav {
+  background-color: var(--plaster);
+  border-bottom: 1px solid var(--ink);
+}
+
+#page.heritage nav.transparent {
+  background-color: rgba(31, 26, 25, 0.35);
+  border-bottom-color: rgba(246, 245, 241, 0.4);
+  backdrop-filter: blur(12px);
+}
+
+#page.heritage nav .stamp .text .title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 26px;
+  letter-spacing: 0.02em;
+}
+
+#page.heritage nav .item-text {
+  font-family: var(--font);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+}
+
+#page.heritage nav .menu {
+  --bg: #21282c;
+}
+
+/* Mobile menu sits on dark grey, so its active links turn gilt */
+#page.heritage nav .menu .open .item,
+#page.heritage nav .menu .item:hover,
+#page.heritage nav .menu .subitems a:hover {
+  --fg: var(--gilt);
+  color: var(--gilt);
+}
+
+/* Keep the ISYF stamp in the nav over masthead photos too */
+@media screen and (min-width: 1100px) {
+  #page.heritage nav.transparent {
+    justify-content: space-between;
+  }
+
+  #page.heritage nav.transparent .stamp {
+    display: flex;
+  }
+}
+
+#page.heritage nav .socials {
+  border-radius: 2px;
+}
+
+@media screen and (min-width: 1100px) {
+  #page.heritage nav .menu {
+    --fg: var(--ink);
+    --bg: var(--plaster);
+  }
+
+  #page.heritage nav.transparent .menu {
+    --fg: var(--plaster);
+    --bg: var(--ink);
+  }
+
+  #page.heritage nav .menu .subitems {
+    border-radius: 0 0 2px 2px;
+    border-color: var(--ink);
+    box-shadow: 0 12px 24px -12px rgba(31, 26, 25, 0.35);
+  }
+
+  #page.heritage nav .menu .open .item,
+  #page.heritage nav .menu .item:hover,
+  #page.heritage nav .menu .subitems a:hover {
+    --fg: var(--crimson-deep);
+    color: var(--crimson-deep);
+  }
+
+  #page.heritage nav.transparent .menu .open .item,
+  #page.heritage nav.transparent .menu .item:hover,
+  #page.heritage nav.transparent .menu .subitems a:hover {
+    --fg: var(--gilt);
+    color: var(--gilt);
+  }
+}
+
+/* ========== FOOTER (shared component, heritage skin) ========== */
+#page.heritage .footer-wrapper {
+  /* Same dark grey as the archived sites' footer */
+  background-color: #21282c;
+}
+
+#page.heritage .footer {
+  --fg: var(--plaster);
+}
+
+#page.heritage .footer h2 {
+  font-size: var(--fs);
+  line-height: 1;
+  margin-block: 1rem;
+  font-weight: 600;
+  font-family: var(--font-serif);
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+}
+
+/* Contact details stay readable on phones, not just icons */
+@media screen and (max-width: 600px) {
+  #page.heritage .footer .full-social {
+    display: inline;
+  }
+
+  #page.heritage .footer .contact-list {
+    flex-direction: column;
+  }
+
+  #page.heritage .footer .contact {
+    gap: 0.75rem;
+  }
+}
+
+#page.heritage .footer .organizers img {
+  border-radius: 2px;
+}
+
+/* ========== SUPPORTERS (shared component, heritage skin) ========== */
+#page.heritage .supporters {
+  border: none;
+  border-top: 1px solid var(--rule);
+  border-radius: 0;
+}
+
+#page.heritage .supporters > *::before {
+  border-radius: 2px;
+}
+
+/* ========== MASTHEAD (shared component, heritage skin) ========== */
+#page.heritage .masthead h1 {
+  font-size: clamp(64px, 11vw, 150px);
+  line-height: 1;
+  margin: 0 0 1rem;
+  --fg: var(--plaster);
+}

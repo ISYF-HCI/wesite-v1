@@ -1,8 +1,7 @@
 <template>
   <div>
-    <span class="eyebrow">Since {{ firstYear }}</span>
-    <h1>Laureates & Eminent Scientists</h1>
-    <p>
+    <h1>Laureates &amp; eminent scientists</h1>
+    <p class="lede">
       Across {{ editions.length }} editions, ISYF has invited {{ count("nobel") }} Nobel
       laureates, {{ count("fields") }} Fields medallists and many other
       distinguished scientists to share their journeys with delegates. Here is
@@ -22,7 +21,7 @@
         </button>
       </div>
       <label class="year-filter">
-        <span class="material-icons-outlined">event</span>
+        <span class="year-label">Edition</span>
         <select v-model="year" aria-label="Filter by year">
           <option :value="null">All years</option>
           <option v-for="y in years" :key="y" :value="y">ISYF {{ y }}</option>
@@ -32,28 +31,28 @@
 
     <div>
       <section v-for="group in groups" :key="group.id" class="group">
-        <h2>
-          {{ group.label }}
-          <span class="count">{{ group.people.length }}</span>
-        </h2>
-        <ul class="people">
-          <li
-            v-for="person in group.people"
-            :key="person.name"
-            :id="scientistId(person.name)"
-            class="person"
-            :class="person.category"
-          >
-            <h3>{{ person.name }}</h3>
-            <p class="honour">{{ person.honour }}</p>
-            <span class="years-label">Invited</span>
-            <ul class="chips">
-              <li v-for="y in person.years" :key="y">
-                <a :href="useBase(`history#y${y}`)" :class="{ current: y === year }">{{ y }}</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        <div>
+          <h2>
+            {{ group.label }}
+            <span class="count">{{ group.people.length }}</span>
+          </h2>
+          <ul class="people">
+            <li
+              v-for="person in group.people"
+              :key="person.name"
+              :id="scientistId(person.name)"
+              class="person"
+            >
+              <h3>{{ person.name }}</h3>
+              <p class="honour">{{ person.honour }}</p>
+              <ul class="years" :aria-label="`Editions attended by ${person.name}`">
+                <li v-for="y in person.years" :key="y">
+                  <a :href="useBase(`history#y${y}`)" :class="{ current: y === year }">{{ y }}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </section>
 
       <p v-if="!groups.length" class="empty">
@@ -65,35 +64,33 @@
 </template>
 
 <style scoped>
-@import url("~/assets/css/common.css");
-
 h1 {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .count {
-  --fg: var(--gray-500);
   font-family: var(--font);
-  font-weight: 400;
-  font-size: 0.6em;
-  vertical-align: 0.15em;
+  font-size: 0.45em;
+  vertical-align: 0.35em;
+  margin-left: 0.25rem;
+  --fg: var(--ink-mute);
 }
+
 
 /* ========== FILTERS ========== */
 .filters {
   position: sticky;
   top: 3.5rem;
   z-index: 10;
-  margin: 2rem -0.75rem 0;
-  padding: 0.75rem;
-  border-bottom: 1px solid var(--gray-200);
-  background-color: var(--bg);
-
+  margin: 2.5rem 0 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  background-color: var(--plaster);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0 1.5rem;
 }
 
 @media screen and (max-width: 700px) {
@@ -105,147 +102,183 @@ h1 {
 .category-filter {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0 1.5rem;
 }
 
 .category-filter button {
-  padding: 0.375rem 0.875rem;
-  border: 1px solid var(--gray-300);
-  border-radius: 999px;
-  font-size: 14px;
+  min-height: 48px;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+  font-size: 15px;
   font-weight: 400;
-  transition: background-color 200ms, border-color 200ms;
+  transition: border-color 200ms, color 200ms;
 }
 
 .category-filter button:hover {
-  border-color: var(--primary);
+  --fg: var(--crimson-deep);
 }
 
 .category-filter button.selected {
-  --fg: var(--gray-100);
-  border-color: var(--primary);
-  background-color: var(--primary);
-}
-
-.category-filter button.selected .count {
-  --fg: var(--primary-100);
+  --fg: var(--crimson-deep);
+  border-bottom-color: var(--crimson);
+  font-weight: 500;
 }
 
 .category-filter .count {
-  font-size: 12px;
-  margin-left: 0.125rem;
+  font-size: 13px;
   vertical-align: 0;
+  margin-left: 0.125rem;
+}
+
+.category-filter button.selected .count {
+  --fg: var(--crimson-deep);
 }
 
 .year-filter {
   display: flex;
   align-items: center;
-  gap: 0.375rem;
+  gap: 0.75rem;
+  min-height: 48px;
 }
 
-.year-filter .material-icons-outlined {
-  --fg: var(--primary);
+.year-label {
+  font-family: var(--font-serif);
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  --fg: var(--ink-mute);
 }
 
 .year-filter select {
-  padding: 0.375rem 0.5rem;
-  border: 1px solid var(--gray-300);
-  border-radius: 6px;
-  background-color: var(--bg);
+  min-height: 40px;
+  padding: 0 2rem 0 0.75rem;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  background: var(--plaster) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231f1a19' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 0.75rem center / 10px;
+  appearance: none;
   font: inherit;
-  font-size: 14px;
+  font-size: 15px;
+  color: var(--ink);
 }
 
-/* ========== PEOPLE ========== */
+/* ========== GROUPS ========== */
+.group {
+  padding-block: 3rem 1rem;
+}
+
+
+.group + .group {
+  padding-top: 2rem;
+}
+
 .group h2 {
-  margin-block: 2.5rem 1rem;
+  margin-bottom: 1.5rem;
 }
 
+/* ========== PEOPLE: an honour-board ledger ========== */
 .people {
   list-style: none;
   padding: 0;
-  margin: 0 -0.75rem;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-  gap: 1rem;
+  margin: 0;
+  border-top: 1px solid var(--ink);
 }
+
 
 .person {
   scroll-margin-top: 9rem;
   margin: 0;
-  padding: 1rem 1rem 1.125rem 1.25rem;
-  border: 1px solid var(--fg);
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  transition: box-shadow 200ms, background-color 200ms;
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 0.25rem 2rem;
+  align-items: baseline;
 }
 
-/* Category stripe, matching the goals and history markers */
-.person::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 0.375rem;
-  background-color: var(--green);
-}
-
-.person.nobel::before {
-  background-color: var(--gold);
-}
-
-.person.fields::before {
-  background-color: var(--purple);
-}
-
-.person.prize::before {
-  background-color: hsla(var(--blue-hsla), 0.8);
-}
 
 .person:target {
   background-color: var(--primary-50);
-  box-shadow: 0px 0px 20px 2px #272f4033;
 }
+
 
 .person h3 {
-  font-style: normal;
-  font-size: 20px;
-  line-height: 1.3;
-  margin-block: 0 0.25rem;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.35;
+  letter-spacing: 0;
 }
+
 
 .honour {
-  margin-block: 0 0.875rem;
+  margin: 0;
   font-size: 15px;
   line-height: 1.45;
+  --fg: var(--ink-soft);
 }
 
-.years-label {
-  display: block;
-  margin-bottom: 0.375rem;
-  --fg: var(--gray-500);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+
+.years {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.25rem;
 }
 
-.chips a.current {
-  --fg: var(--gray-100);
-  border-color: var(--primary);
-  background-color: var(--primary);
+.years li {
+  margin: 0;
+}
+
+.years a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding-inline: 0.375rem;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-variant-numeric: lining-nums;
+  text-decoration: none;
+  --fg: var(--crimson-deep);
+}
+
+
+.years a:hover {
+  text-decoration: underline;
+}
+
+.years a.current {
+  --fg: var(--plaster);
+  background-color: var(--crimson);
+  border-radius: 2px;
+}
+
+
+@media screen and (max-width: 760px) {
+  .person {
+    grid-template-columns: 1fr;
+    padding-inline: 0;
+  }
+
+  .years {
+    margin-left: -0.375rem;
+  }
+
+  .years a {
+    min-height: 40px;
+  }
 }
 
 /* ========== MISC ========== */
 .empty {
   margin-block: 3rem;
-  text-align: center;
 }
 
 .reset {
-  --fg: var(--primary);
+  min-height: 44px;
+  margin-left: 0.5rem;
+  --fg: var(--crimson-deep);
   font-weight: 500;
   text-decoration: underline;
 }
